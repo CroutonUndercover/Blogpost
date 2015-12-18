@@ -46,13 +46,13 @@
                 <ul class="nav navbar-nav">
                 	
                     <li>
-                        <a href="AdventurePage.html">Adventures</a>
+                        <a href="AdventurePage.php">Adventures</a>
                     </li>
                     
                    
                     
-                    <li><a href="signuppage.html">Sign up</a> </li>
-                   	<li><a href="Authors.html">Authors</a> </li>
+                    <li><a href="signuppage.php">Sign up</a> </li>
+                   	<li><a href="Authors.php">Authors</a> </li>
                    
                     
                 </ul>

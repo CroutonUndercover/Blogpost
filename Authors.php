@@ -45,12 +45,12 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
                     <li>
-                        <a href="AdventurePage.html">Adventures</a>
+                        <a href="AdventurePage.php">Adventures</a>
                     </li>
-                     	<li><a href="Authors.html">Authors</a> </li>
+                     	<li><a href="Authors.php">Authors</a> </li>
                    
                     <li>
-                    	<a href="signuppage.html">Create account</a>
+                    	<a href="signuppage.php">Create account</a>
                     </li>
                     <
                 </ul>

@@ -48,7 +48,7 @@
                         <a href="AdventurePage">Adventures</a>
                     </li>
                     	
-                   	 	<li><a href="Authors.html">Authors</a> </li>
+                   	 	<li><a href="Authors.php">Authors</a> </li>
                     <li>
                     	<a href="sign up page.html">Create account</a>
                     </li>
