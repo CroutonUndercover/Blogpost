@@ -146,7 +146,7 @@
                                 
                                   
                                 <div class="form-group">
-                                    <label for="login-username" class="col-md-3 control-label">Email</label>
+                                    <label for="login-username" class="col-md-3 control-label">Username</label>
                                     <div class="col-md-9">
                                         <input type="text" class="form-control" name="user" placeholder="username">
                                     </div>
@@ -175,11 +175,63 @@
                                 <div class="form-group">
                                     <!-- Button -->                                        
                                     <div class="col-md-offset-3 col-md-9">
-                                        <button id="btn-signup" type="button" class="btn btn-info"><i class="icon-hand-right"></i> &nbsp Sign Up</button>
+                                        <button id="btn-signup" type="button" onclick=" <?php
+
+                                        $servername = "br-cdbr-azure-south-a.cloudapp.net";
+                                        $username = "b5b6aaf0dc5c33";
+                                        $password = "9770557f";
+                                        $dbname = "dreamsparkdatabase1";
+                                        // Create connection
+                                        $conn = new mysqli($servername, $username, $password, $dbname);
+
+                                        // Check connection
+                                        if ($conn->connect_error) {
+                                            die("Connection failed: " . $conn->connect_error);
+                                        }else {
+
+                                            function id()
+                                            {
+                                                // add limit
+                                                $id_length = 10;
+
+// add any character / digit
+                                                $alfa = "1234567890";
+                                                $token = "";
+                                                for ($i = 1; $i < $id_length; $i++) {
+
+                                                    // generate randomly within given character/digits
+                                                    @$token .= $alfa[rand(1, strlen($alfa))];
+
+                                                }
+                                                return $token;
+                                            }
+
+                                            if (isset($_POST['usernam'])) {
+                                                $user = ($_POST['username']);
+
+                                                if (isset($_POST['passd'])) {
+                                                    $pass = ($_POST['passd']);
+
+                                                    if (isset($_POST['userType'])) {
+                                                        $uType = ($_POST['userType']);
+                                                        $id = id();
+                                                        $sql = "INSERT INTO 'member' ('mem_id','username', 'password', 'user_type') VALUES ('$id','$user', '$pass', '$uType')";
+                                                        if ($conn->query($sql) === TRUE) {
+                                                            echo "New member created successfully";
+                                                        } else {
+                                                            echo "Error: " . $sql . "<br>" . $conn->error;
+                                                        }
+
+                                                    }
+                                                }
+                                            }
+                                        }
+                                        $conn->close();
+                                        ?> class="btn btn-info"><i class="icon-hand-right"></i> &nbsp Sign Up</button>
                                         <span style="margin-left:8px;">or</span>  
                                     </div>
                                 </div>
-                                <?php
+                                <?
                                     $servername = "br-cdbr-azure-south-a.cloudapp.net";
                                     $username = "b5b6aaf0dc5c33";
                                     $password = "9770557f";
@@ -210,7 +262,7 @@
                                     return $token;
                                 }
                                 $id = id();
-                                $user = $_POST['username'];
+                                $user = $_GET['user'];
                                 $pass = $_POST['passd'];
                                 $userType = $_POST['userType'];
 
