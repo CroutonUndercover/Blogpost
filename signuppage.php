@@ -100,13 +100,6 @@
 
 
                                 <div style="margin-top:10px" class="form-group">
-                                    <!-- Button -->
-
-                                    <div class="col-sm-12 controls">
-                                      <a id="btn-login" href="#" class="btn btn-success">Login  </a>
-                                      <a id="btn-fblogin" href="#" class="btn btn-primary">Login with Facebook</a>
-
-                                    </div>
                                 </div>
 
 
@@ -144,9 +137,9 @@
                                 
                                   
                                 <div class="form-group">
-                                    <label for="email" class="col-md-3 control-label">Email</label>
+                                    <label for="login-username" class="col-md-3 control-label">Email</label>
                                     <div class="col-md-9">
-                                        <input type="text" class="form-control" name="email" placeholder="Email Address">
+                                        <input type="text" class="form-control" name="user" placeholder="username">
                                     </div>
                                 </div>
                                     
@@ -157,12 +150,15 @@
                                         <input type="password" class="form-control" name="passwd" placeholder="Password">
                                     </div>
                                 </div>
-                                
-                                 <div class="form-group">
-                                    <label for="password" class="col-md-3 control-label">User Type</label>
-                                    <div class="col-md-9">
-                                        <input type="text" class="form-control" name="User Type" placeholder="User Type">
-                                    </div>
+
+                                <div class="dropdown">
+                                    <button class="btn btn-primary dropdown-toggle" type="button" name="userType" data-toggle="dropdown">User type
+                                        <span class="caret"></span></button>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="#">reader</a></li>
+                                        <li><a href="#">author</a></li>
+                                        <li><a href="#">administrator</a></li>
+                                    </ul>
                                 </div>
                                     
                                 
@@ -174,17 +170,35 @@
                                         <span style="margin-left:8px;">or</span>  
                                     </div>
                                 </div>
-                                
-                                <div style="border-top: 1px solid #999; padding-top:20px"  class="form-group">
-                                    
-                                    <div class="col-md-offset-3 col-md-9">
-                                        <button id="btn-fbsignup" type="button" class="btn btn-primary"><i class="icon-facebook"></i> � Sign Up with Facebook</button>
-                                    </div>                                           
-                                        
-                                </div>
-                                
-                                
-                                
+                                <?php
+                                    $servername = "br-cdbr-azure-south-a.cloudapp.net";
+                                    $username = "b5b6aaf0dc5c33";
+                                    $password = "9770557f";
+                                    $dbname = "dreamsparkdatabase1";
+// Create connection
+                                    $conn = new mysqli($servername, $username, $password, $dbname);
+
+// Check connection
+                                    if ($conn->connect_error) {
+                                        die("Connection failed: " . $conn->connect_error);
+                                    }
+                                    echo "Connected successfully";
+
+
+
+                                $user = $_POST['username'];
+                                $pass = $_POST['passd'];
+                                $userType = $_POST['userType'];
+
+
+                                    $sql =  "INSERT INTO member ('username', 'password', 'user_type') VALUES ('$user', '$pass', '$userType')";
+                                    if ($conn->query($sql) === TRUE) {
+                                        echo "New record created successfully";
+                                    } else {
+                                        echo "Error: " . $sql . "<br>" . $conn->error;
+                                    }
+                                $conn->close();
+                                ?>
                             </form>
                          </div>
                     </div>
