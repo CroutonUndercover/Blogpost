@@ -67,7 +67,8 @@
 $servername = "br-cdbr-azure-south-a.cloudapp.net";
 $username = "b5b6aaf0dc5c33";
 $password = "9770557f";
-$dbname = "login";
+$dbname = "dreamsparkdatabase1";
+
 
 // Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);
