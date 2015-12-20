@@ -193,14 +193,29 @@
                                     }
                                     echo "Connected successfully";
 
+                                function id()
+                                {
+                                    // add limit
+                                    $id_length = 10;
 
+// add any character / digit
+                                    $alfa = "1234567890";
+                                    $token = "";
+                                    for($i = 1; $i < $id_length; $i ++) {
 
+                                        // generate randomly within given character/digits
+                                        @$token .= $alfa[rand(1, strlen($alfa))];
+
+                                    }
+                                    return $token;
+                                }
+                                $id = id();
                                 $user = $_POST['username'];
                                 $pass = $_POST['passd'];
                                 $userType = $_POST['userType'];
 
 
-                                    $sql =  "INSERT INTO member ('username', 'password', 'user_type') VALUES ('$user', '$pass', '$userType')";
+                                $sql =  "INSERT INTO 'member' ('mem_id','username', 'password', 'user_type') VALUES ('$id','$user', '$pass', '$uType')";
                                     if ($conn->query($sql) === TRUE) {
                                         echo "New record created successfully";
                                     } else {
